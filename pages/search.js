@@ -60,6 +60,10 @@ const isServer = typeof window === 'undefined'
 const Search = ({ router, repos }) => {
   const { lang, sort, order, page = 1 } = router.query
 
+  if (!repos.items) {
+    return <p>暂无数据</p>
+  }
+
   useEffect(() => {
     if (!isServer) {
       cacheArray(repos.items)
